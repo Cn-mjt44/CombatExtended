@@ -59,10 +59,10 @@ namespace CombatExtended
         {
             get
             {
-                if (CompEquippable == null 
-                    || CompEquippable.PrimaryVerb == null 
-                    || CompEquippable.PrimaryVerb.caster == null
-                    || ((CompEquippable?.parent?.ParentHolder as Pawn_InventoryTracker)?.pawn is Pawn holderPawn && holderPawn != CompEquippable?.PrimaryVerb?.CasterPawn))
+	    	Pawn holderPawn;
+                if (CompEquippable?.PrimaryVerb?.caster == null
+                    || ((holderPawn = (CompEquippable?.parent?.ParentHolder as Pawn_InventoryTracker)?.pawn) is Pawn && holderPawn != CompEquippable?.PrimaryVerb?.CasterPawn))
+                    || ((holderPawn = (CompEquippable?.parent?.ParentHolder as Pawn_EquipmentTracker)?.pawn) is Pawn && holderPawn != CompEquippable?.PrimaryVerb?.CasterPawn)))
                 {
                     return null;
                 }
